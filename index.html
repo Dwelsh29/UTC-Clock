@@ -1,31 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Zulu Time</title>
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zulu Clock</title>
   <style>
-    body {
-      background-color: #0a0f1f;
-      color: #00ffea;
-      font-family: monospace;
-      font-size: 2em;
-      text-align: center;
-      margin-top: 30%;
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden; /* Hide scroll bar */
+      background-color: #000;
+      color: #00ffff;
+      font-family: 'Courier New', monospace;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .clock {
+      font-size: 32px;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
-  <div id="zulu-time">Loading...</div>
+  <div class="clock" id="clock">--:--:--Z</div>
 
   <script>
-    function updateZuluTime() {
+    function updateClock() {
       const now = new Date();
-      const utc = now.toUTCString().split(' ')[4]; // Extract HH:MM:SS
-      document.getElementById('zulu-time').textContent = utc + 'Z';
+      const hours = String(now.getUTCHours()).padStart(2, '0');
+      const minutes = String(now.getUTCMinutes()).padStart(2, '0');
+      const seconds = String(now.getUTCSeconds()).padStart(2, '0');
+      document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}Z`;
     }
-    setInterval(updateZuluTime, 1000);
-    updateZuluTime();
+    setInterval(updateClock, 1000);
+    updateClock();
   </script>
 </body>
 </html>
-
