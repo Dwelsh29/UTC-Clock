@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Zulu Time</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background-color: #0a0f1f;
+      color: #00ffea;
+      font-family: monospace;
+      font-size: 2em;
+      text-align: center;
+      margin-top: 30%;
+    }
+  </style>
+</head>
+<body>
+  <div id="zulu-time">Loading...</div>
+
+  <script>
+    function updateZuluTime() {
+      const now = new Date();
+      const utc = now.toUTCString().split(' ')[4]; // Extract HH:MM:SS
+      document.getElementById('zulu-time').textContent = utc + 'Z';
+    }
+    setInterval(updateZuluTime, 1000);
+    updateZuluTime();
+  </script>
+</body>
+</html>
+
