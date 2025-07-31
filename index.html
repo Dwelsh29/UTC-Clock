@@ -8,23 +8,30 @@
     html, body {
       margin: 0;
       padding: 0;
-      overflow: hidden; /* Hide scroll bar */
       background-color: #000;
       color: #00ffff;
       font-family: 'Courier New', monospace;
+      overflow: hidden; /* Prevent scrolling */
+      height: 100%;
+      width: 100%;
+    }
+    .container {
       display: flex;
-      align-items: center;
       justify-content: center;
-      height: 100vh;
+      align-items: center;
+      height: 100%;
+      width: 100%;
     }
     .clock {
-      font-size: 32px;
+      font-size: 28px;
       font-weight: bold;
     }
   </style>
 </head>
 <body>
-  <div class="clock" id="clock">--:--:--Z</div>
+  <div class="container">
+    <div class="clock" id="clock">--:--:--Z</div>
+  </div>
 
   <script>
     function updateClock() {
